@@ -1,0 +1,64 @@
+import { useTheme } from "@/theme";
+import React, { useState } from "react";
+import { ScrollView, StyleSheet, View } from "react-native";
+import { Searchbar } from "react-native-paper";
+import { Avatar, Button, Card, Text } from "react-native-paper";
+
+export default function Home() {
+  const { layout, gutters } = useTheme();
+  const [searchQuery, setSearchQuery] = useState("");
+  const LeftContent = (props) => (
+    <Avatar.Image size={48} source={{ uri: "https://picsum.photos/700" }} />
+  );
+
+  const onChangeSearch = (query) => setSearchQuery(query);
+  return (
+    <View style={[layout.flex_1, gutters.padding_12]}>
+      <Searchbar
+        placeholder="Search"
+        onChangeText={onChangeSearch}
+        value={searchQuery}
+      />
+      <View style={{ height: 24 }} />
+
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <Card>
+          <Card.Title
+            title="Cut, File & polish"
+            subtitle="Elysian"
+            left={LeftContent}
+          />
+          <Card.Cover
+            source={{
+              uri: "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/dpr_2,fl_progressive:steep,q_auto:low,f_auto,c_limit/images/supply/customer-app-supply/1669782507190-9db197.jpeg",
+            }}
+          />
+          <Card.Actions>
+            <Button>View More</Button>
+          </Card.Actions>
+        </Card>
+
+        <View style={{ height: 24 }} />
+
+        <Card>
+          <Card.Title
+            title="Chocolate & Vannila Manicure"
+            subtitle="Elysian"
+            left={LeftContent}
+          />
+          <Card.Cover
+            source={{
+              uri: "https://res.cloudinary.com/urbanclap/image/upload/t_high_res_template,q_auto:low,f_auto/dpr_2,fl_progressive:steep,q_auto:low,f_auto,c_limit/images/supply/customer-app-supply/1669782997062-93ed4f.jpeg",
+            }}
+            style={[gutters.padding_24]}
+          />
+          <Card.Actions>
+            <Button>View More</Button>
+          </Card.Actions>
+        </Card>
+      </ScrollView>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({});
